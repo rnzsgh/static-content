@@ -40,14 +40,14 @@ Parameters:
 
   DomainName:
     Type: String
-    Description: Domain name for the API Gateway
+    Description: Domain name for the CloudFront
     Default: ""
     AllowedPattern: "(^$|^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)+[A-Za-z]{2,6}$)" # Allow for a blank or a domain name
     ConstraintDescription: Please enter a valid domain name
 
   HostedZoneName:
     Type: String
-    Description: The Amazon Route 53 Hosted Zone Name for the optional load balancer alias record - do not include a period at the end
+    Description: The Amazon Route 53 Hosted Zone Name for the optional alias record - do not include a period at the end
     Default: ""
     AllowedPattern: "(^$|^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)+[A-Za-z]{2,6}$)" # Allow for a blank or a domain name
     ConstraintDescription: Please enter a valid Route 53 Hosted Zone Name
@@ -55,11 +55,69 @@ Parameters:
   CodeBuildImage:
     Type: String
     Default: aws/codebuild/nodejs:10.14.1
+    Description: Image used for build - see: https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html
 
   CloudFrontPriceClass:
-    Description: Price Class dictates which global locations CloudFront will serve content from.
+    Description: Global locations CloudFront will serve content from - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PriceClass.html
     Type: String
     Default: PriceClass_100
+    AllowedValues:
+      - PriceClass_100
+      - PriceClass_200
+      - PriceClass_All
+    ConstraintDescription: Specify PriceClass_100, PriceClass_200 or PriceClass_All
+
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Environment
+        Parameters:
+          - EnvironmentName
+      - Label:
+          default: CloudFront
+        Parameters:
+          - HostedZoneName
+          - DomainName
+          - CertificateArn
+          - CloudFrontPriceClass
+
+      - Label:
+          default: CI/CD
+        Parameters:
+          - CodeBuildImage
+          - GitSourceRepo
+          - GitBranch
+          - GitHubUser
+          - GitHubToken
+    ParameterLabels:
+      EnvironmentName:
+        default: Environment
+      HostedZoneName:
+        default: Hosted Zone
+      DomainName:
+        default: Domain
+      CertificateArn:
+        default: TLS Certificate
+      CloudFrontPriceClass:
+        default: Price Class
+      CodeBuildImage:
+        default: CodeBuild Image
+      GitSourceRepo:
+        default: Git Repo
+      GitBranch:
+        default: Git Branch
+      GitHubUser:
+        default: GitHub User
+      GitHubToken:
+        default: GitHub Token
+
+Conditions:
+
+  CreateRoute53Record: !And
+    - !Not [ !Equals [ !Ref DomainName, "" ] ]
+    - !Not [ !Equals [ !Ref HostedZoneName, "" ] ]
 
 
 Resources:
@@ -329,6 +387,7 @@ Resources:
 
   Route53Record:
     Type: AWS::Route53::RecordSet
+    Condition: CreateRoute53Record
     Properties:
       Name: !Ref DomainName
       HostedZoneName: !Sub ${HostedZoneName}.
