@@ -146,6 +146,7 @@ Resources:
           - !Ref DomainName
         Enabled: true
         IPV6Enabled: true
+        HttpVersion: http2
         DefaultRootObject: index.html
         Logging:
           IncludeCookies: false
