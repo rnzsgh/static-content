@@ -31,6 +31,26 @@ This repo contains an AWS [CloudFormation](https://aws.amazon.com/cloudformation
 
 [us-west-2-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
 
+[ca-central-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=ca-central-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
 
+[sa-east-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=sa-east-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[eu-west-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[eu-west-2-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[eu-west-3-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[eu-central-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[ap-northeast-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[ap-northeast-2-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[ap-south-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[ap-southeast-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
+
+[ap-southeast-2-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-2#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
 
 
