@@ -192,6 +192,8 @@ Resources:
         EnvironmentVariables:
           - Name: ACCOUNT_ID
             Value: !Ref AWS::AccountId
+          - Name: DISTRIBUTION_ID
+            Value: !Ref CloudFrontDistribution
           - Name: DOMAIN_NAME
             Value: !Ref DomainName
           - Name: ORIGIN_BUCKET_NAME
