@@ -7,6 +7,11 @@ Description: Static content with CloudFront + CI/CD
 
 Parameters:
 
+  EnvironmentName:
+    Type: String
+    Description: Name of the environment (e.g., dev, qa, prod)
+    Default: dev
+
   GitSourceRepo:
     Type: String
     Description: GitHub source repository - must contain a Dockerfile in the base
@@ -72,6 +77,9 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
+      Tags:
+        - Key: Environment
+          Value: !Ref EnvironmentName
 
   OriginBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -101,6 +109,9 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
+      Tags:
+        - Key: Environment
+          Value: !Ref EnvironmentName
 
   CodePipelineArtifactBucket:
     Type: AWS::S3::Bucket
@@ -115,6 +126,9 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
+      Tags:
+        - Key: Environment
+          Value: !Ref EnvironmentName
 
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
@@ -154,6 +168,9 @@ Resources:
             Id: s3-origin-bucket
             S3OriginConfig:
               OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}
+      Tags:
+        - Key: Environment
+          Value: !Ref EnvironmentName
 
   LogGroupBuild:
     Type: AWS::Logs::LogGroup
@@ -184,6 +201,9 @@ Resources:
         CloudWatchLogs:
           Status: ENABLED
           GroupName: !Ref LogGroupBuild
+      Tags:
+        - Key: Environment
+          Value: !Ref EnvironmentName
 
   CodeBuildServiceRole:
     Type: AWS::IAM::Role
@@ -220,6 +240,10 @@ Resources:
                   - s3:List*
                   - s3:DeleteObject
                   - s3:GetObjectVersion
+              - Resource: !Sub arn:aws:s3:::${OriginBucket}
+                Effect: Allow
+                Action:
+                  - s3:List*
 
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline

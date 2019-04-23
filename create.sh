@@ -13,4 +13,5 @@ aws cloudformation create-stack \
   ParameterKey=GitSourceRepo,ParameterValue=$GIT_REPO \
   ParameterKey=GitBranch,ParameterValue=$GIT_BRANCH \
   ParameterKey=GitHubToken,ParameterValue=$GITHUB_TOKEN \
-  ParameterKey=GitHubUser,ParameterValue=$GITHUB_USER
+  ParameterKey=GitHubUser,ParameterValue=$GITHUB_USER \
+  ParameterKey=EnvironmentName,ParameterValue=$ENV
