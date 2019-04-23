@@ -38,6 +38,13 @@ Parameters:
     MaxLength: 2048
     Default: ""
 
+  DefaultTtl:
+    Type: Number
+    Description: The default TTL for cached objects
+    MinValue: 30
+    MaxValue: 31536000 # One year
+    Default: 300
+
   DomainName:
     Type: String
     Description: Domain name for the CloudFront
@@ -209,7 +216,28 @@ Resources:
         Logging:
           IncludeCookies: false
           Bucket: !GetAtt CloudFrontAccessLogsBucket.DomainName
+        CacheBehaviors:
+          - AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+            Compress: true
+            DefaultTTL: 30
+            MinTTL: 30
+            MaxTTL: 30
+            ForwardedValues:
+               QueryString: true
+               QueryStringCacheKeys:
+                - v
+               Cookies:
+                 Forward: none
+            TargetOriginId: s3-origin-bucket
+            ViewerProtocolPolicy: redirect-to-https
+            PathPattern: /index.html
         DefaultCacheBehavior:
+          Compress: true
+          DefaultTTL: !Ref DefaultTtl
+          MinTTL: 30
           ViewerProtocolPolicy: redirect-to-https
           AllowedMethods:
             - GET
@@ -217,7 +245,9 @@ Resources:
             - OPTIONS
           TargetOriginId: s3-origin-bucket
           ForwardedValues:
-             QueryString: false
+             QueryString: true
+             QueryStringCacheKeys:
+              - v
              Cookies:
                Forward: none
         ViewerCertificate:
