@@ -3,8 +3,6 @@
 This repo contains an AWS [CloudFormation](https://aws.amazon.com/cloudformation/) template that creates an [Amazon CloudFront](https://aws.amazon.com/cloudfront/) distribution with an [Amazon S3](https://aws.amazon.com/s3/) bucket that serves as the origin for the distribution, and an [AWS CodePipeline](https://aws.amazon.com/codepipeline/) for CI/CD, based on commits to a separate [GitHub](https://github.com) repo.
 
 
-<details>
-<summary>Basic Infrastructure Templates (VPC etc)</summary>
 
 | CloudFormation | Region Name | Region
 :---: | ------------ | -------------
@@ -23,8 +21,6 @@ This repo contains an AWS [CloudFormation](https://aws.amazon.com/cloudformation
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][ap-south-1-cloudfront] | Asia Pacific (Mumbai) | ap-south-1 |
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][ap-southeast-1-cloudfront] | Asia Pacific (Singapore) | ap-southeast-1 |
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][ap-southeast-2-cloudfront] | Asia Pacific (Sydney) | ap-southeast-2 |
-
-</details>
 
 
 [us-east-1-cloudfront]: https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/awslabs-startup-kit-templates-deploy-v5/cloudfront-cicd.cfn.yml
