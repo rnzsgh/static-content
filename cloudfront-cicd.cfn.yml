@@ -40,10 +40,17 @@ Parameters:
 
   DefaultTtl:
     Type: Number
-    Description: The default TTL for cached objects
+    Description: The default TTL in seconds for cached objects
     MinValue: 30
     MaxValue: 31536000 # One year
     Default: 300
+
+  IndexTtl:
+    Type: Number
+    Description: The default TTL in seconds for the /index.html object
+    MinValue: 30
+    MaxValue: 31536000
+    Default: 60
 
   DomainName:
     Type: String
@@ -89,14 +96,15 @@ Metadata:
           - DomainName
           - CertificateArn
           - CloudFrontPriceClass
-
+          - DefaultTtl
+          - IndexTtl
       - Label:
           default: CI/CD
         Parameters:
           - CodeBuildImage
+          - GitHubUser
           - GitSourceRepo
           - GitBranch
-          - GitHubUser
           - GitHubToken
     ParameterLabels:
       EnvironmentName:
@@ -105,6 +113,10 @@ Metadata:
         default: Hosted Zone
       DomainName:
         default: Domain
+      DefaultTtl:
+        default: Default TTL
+      IndexTtl:
+        default: Index Doc TTL
       CertificateArn:
         default: TLS Certificate
       CloudFrontPriceClass:
@@ -222,9 +234,9 @@ Resources:
             - HEAD
             - OPTIONS
             Compress: true
-            DefaultTTL: 30
+            DefaultTTL: !Ref IndexTtl
             MinTTL: 30
-            MaxTTL: 30
+            MaxTTL: !Ref IndexTtl
             ForwardedValues:
                QueryString: true
                QueryStringCacheKeys:
