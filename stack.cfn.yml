@@ -245,6 +245,10 @@ Resources:
                 Effect: Allow
                 Action:
                   - s3:List*
+              - Resource: '*'
+                Effect: Allow
+                Action:
+                  - cloudfront:CreateInvalidation
 
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline
