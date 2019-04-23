@@ -134,7 +134,7 @@ Resources:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
-        Comment: string-value
+        Comment: !Ref AWS::StackName
 
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
