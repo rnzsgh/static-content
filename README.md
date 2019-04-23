@@ -12,7 +12,6 @@ This repo contains an [AWS CloudFormation](https://aws.amazon.com/cloudformation
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][ca-central-1-cloudfront] | Canada (Central) | ca-central-1 |
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][sa-east-1-cloudfront] | S. America (São Paulo) | sa-east-1 |
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][eu-north-1-cloudfront] | Europe (Stockholm) | eu-north-1 |
-
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][eu-west-1-cloudfront] | EU (Ireland) | eu-west-1 |
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][eu-west-2-cloudfront] | EU (London) | eu-west-2 |
 [<img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png" width="150"> ][eu-west-3-cloudfront] | EU (Paris) | eu-west-3 |
