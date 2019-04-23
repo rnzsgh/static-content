@@ -4,7 +4,7 @@
 
 aws cloudformation create-stack \
   --stack-name $STACK_NAME \
-  --template-body file://stack.cfn.yml \
+  --template-body file://cloudfront-cicd.cfn.yml \
   --capabilities CAPABILITY_NAMED_IAM \
   --parameters \
   ParameterKey=CertificateArn,ParameterValue=$CERT_ARN \
